@@ -1,0 +1,68 @@
+<!--HTML input을 통해 점수(score)를 입력받고, 버튼을 클릭할 시 점수 구간에 따라 switch 문을 사용해 성적을 문서에 출력합니다.
+
+점수 구간은 아래와 같습니다.
+점수가 90점 이상이면 A, 80점 이상이면 B, 70점 이상이면 C, 60점 이상이면 D, 나머지는 F를 출력합니다.
+점수가 100점을 초과하거나, 0 미만인 경우 "올바른 점수(0~100)를 입력하세요."를 출력합니다.
+
+주의사항. 1점일 때 "F", 2점일 때 "F" 이런 식으로 0 ~ 100점 사이 모든 점수별 케이스를 작성하는 과제가 아닙니다.
+
+Hint1. 점수를 10으로 나눈 몫을 사용하면 case 를 10개 이내로 단축 가능합니다.
+Hint2. Math.trunc(숫자값) 메서드를 이용해 숫자의 소수부를 제거할 수 있습니다.-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>점수 구분</title>
+</head>
+<body>
+    <h2>점수 구분</h1>
+    <input
+        id="input_score"
+        type="number"
+        placeholder="점수를 입력하세요"
+    />
+    <button id="btn" type="button">확인</button>
+    <div id="result"></div>
+</body>
+</html>
+<script>
+    // 버튼에 Click 이벤트 등록
+    document.getElementById("btn").onclick = function ()
+    {   
+        // input 내 값 조회
+        const score = document.getElementById("input_score").value;
+        if (score > 100 || score < 0)
+        {
+            result = "올라른 점수(0~100)을 입력하세요."
+        }
+        else
+        {
+        switch(Math.trunc(score/10))
+        {
+            case 10:
+            case 9:
+            result = "A";
+            break;
+
+            case 8:
+            result = "B";
+            break;
+
+            case 7:
+            result = "C";
+            break;
+
+            case 6:
+            result = "D";
+            break;
+            
+            default:
+            result = "F";
+            break;
+        }
+        }
+        // result라는 id를 가진 div 태그 내용을 result로 변경
+        document.getElementById("result").textContent = result;
+    }
+</script>

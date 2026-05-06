@@ -1,12 +1,13 @@
-function solution(my_string, letter) {
-    var answer = '';
-    for (let i = 0; i < my_string.length; i++)
+function draw(number)
+{
+    for (let i = 1; i <= number; i++) // 현재 줄 번호 담당
     {
-        if (my_string[i] != letter)
+        let star = "";
+        for (let j = 1; j <= i; j++)
         {
-            answer += my_string[i]
+            star += "*";
         }
+        console.log(star)
     }
-    return answer;
 }
-console.log(solution("abcdef", 'f'))
+draw(5)

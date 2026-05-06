@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">버튼입니다.</button>
+</body>
+<script>
+    const first = function()
+    {
+        alert("First Click");
+    };
+    const second = function()
+    {
+        alert("Seconde Click");
+    };
+    const btn = document.getElementById("btn");
+    btn.addEventListener("click", first);
+    btn.addEventListener("click", second);
+</script>
+</html>

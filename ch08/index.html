@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #title
+        {
+            margin: 80px;
+        }
+        #input_todo_title
+        {
+            margin-left: 40px;
+        }
+        #btn_add_todo_item
+        {
+            margin-left: 90px;
+            margin-top: 10px;
+        }
+        .todo_warp ul
+        {
+            margin: 10px;
+            padding: 0;
+        }
+        .todo_warp li
+        {
+            width: 200px;
+            list-style: none;
+            padding: 20px 10px;
+            color: white;
+            background-color: pink;
+            margin-bottom: 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all ease 0.5s;
+        }
+        .todo_warp li:hover
+        {
+            background-color: rgb(240, 132, 150);
+            scale: 1.05;
+        }
+    </style>
+</head>
+<body>
+    <div class="title_warp">
+        <span id="title">Todo List</span>
+    </div>
+    <div class="todo_warp">
+        <ul id="todo_list">
+            <li>기상하기</li>
+            <li>밥먹기</li>
+            <li>코딩하기</li>
+            <li>자기</li>
+        </ul>
+    </div>
+    <div>
+    <input id="input_todo_title" type="text" />
+    </div>
+    <button id="btn_add_todo_item">추가</button>
+</body>
+<script>
+    document.getElementById("btn_add_todo_item").onclick = function()
+    {
+        const title = document.getElementById("input_todo_title").value;
+        const item = `<li>${title}</li>`;
+        let list = document.getElementById("todo_list");
+        list.innerHTML += item;
+    };
+</script>
+</html>

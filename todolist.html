@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <style>
+        @font-face
+        {
+            font-family: 'Juache';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMJUA.woff') format('woff');
+            font-weight: normal;
+            font-display: swap;
+        }
+        body
+        {
+            background-color: rgb(35, 35, 35);
+            color: white;
+            font-family: 'Juache';
+        }
+        h1
+        {
+            color: greenyellow;
+            margin-bottom: 5px;
+        }
+        p
+        {
+            color: rgb(175, 175, 175);
+        }
+        .wrap
+        {
+            width: 60%;
+            margin: 20px auto 0;
+            background-color: rgba(100, 100, 100, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+        }
+        img
+        {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .todo_wrap
+        {
+            background-color: rgba(125, 125, 125, 0.1);
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 10px;
+        }
+        h2
+        {
+            color: greenyellow;
+        }
+        .todo_wrap h2, .todo_check_wrap h2
+        {
+            margin-top: 0px;
+        }
+        .todo_check_wrap
+        {
+            background-color: rgba(175, 175, 175, 0.1);
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 10px;
+        }
+        button
+        {
+            background-color: blue;
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+        button:hover
+        {
+            background-color: rgb(0, 0, 225);
+            color: rgb(225, 225, 255);
+        }
+        input
+        {
+            border-radius: 5px;
+            border: none;
+        }
+        #todo_list li
+        {
+            margin-bottom: 10px;
+        }
+        #todo_list .todo_item.done
+        {
+            color: greenyellow;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <h1>Todo List</h1>
+        <p>해야할 일을 관리하는 목록입니다.</p>
+        <img src="./Unity.jpg" alt="Unity" />
+        <div class="todo_wrap">
+            <h2>할 일 목록</h2>
+            <ol id="todo_list"></ol>
+        </div>
+        <div class="todo_wrap">
+            <h2>할 일 등록</h2>
+            <input id="input_todo" type="text" placeholder="할 일을 입력하세요."/>
+            <button id="btn_add">등록</button>
+        </div>
+        <div class="todo_check_wrap">
+            <h2>완료하기</h2>
+            <p>
+                완료 처리할 아이템의 순번을 입력하고 버튼을 누르면 완료
+                처리됩니다.
+            </p>
+            <input id="input_todo_num" type="number" placeholder="할 일 순번을 입력하세요."/>
+            <button id="btn_comp">완료</button>
+        </div>
+    </div>
+</body>
+<script>
+    const todos = ["밥 먹기", "씻기", "양치하기"]
+    // 기본 할 일 렌더링
+    function renderTodo(todo) {
+        const li = document.createElement("li");
+        li.textContent = todo
+        li.classList.add("todo_item")
+        document.getElementById("todo_list").appendChild(li);
+    }
+    for (let i = 0; i < todos.length; i++)
+    {
+        renderTodo(todos[i]);
+    }
+    // 할 일 등록
+    document.getElementById("btn_add").onclick = function ()
+    {
+        const todo = document.getElementById("input_todo").value;
+        todos.push(todo);
+        renderTodo(todo);
+    }
+    // 완료/할 일 삭제
+    document.getElementById("btn_comp").onclick = function ()
+    {
+        const num = document.getElementById("input_todo_num").value;
+        if (num < 1 || num > todos.length)
+        {
+            alert(`1부터 ${todos.length}사이의 값을 입력해주세요.`);
+            return;
+        }
+        const todoItem = document.getElementsByClassName("todo_item")
+        todoItem[num-1].classList.add("done");
+    }
+</script>
+</html>
